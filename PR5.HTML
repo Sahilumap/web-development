@@ -1,0 +1,70 @@
+=<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+
+<script>
+function validateForm() {
+    var name = document.getElementById("name").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var fileInput = document.getElementById("userImage");
+
+    // Pattern: Only letters (A-Z, a-z) and spa
+    // 3ces allowed
+    var namePattern = /^[A-Za-z\s]+$/;
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // 1. Name Validation (Letters only)
+    if (name === "" || !namePattern.test(name)) {
+        alert("please enter correct name");
+        return false;
+    }
+
+    // 2. Email Validation
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address");
+        return false;
+    }
+
+    // 3. Image Validation (Max 250 KB)
+    if (fileInput.files.length === 0) {
+        alert("Please select an image");
+        return false;
+    }
+
+    var fileSize = fileInput.files[0].size; 
+    var maxSize = 250 * 1024; // 250 KB in bytes
+
+    if (fileSize > maxSize) {
+        alert("File is too large! Maximum limit is 250 KB.");
+        return false;
+    }
+
+    // Success Message
+    alert("Form submitted successfully!");
+    return true;
+}
+</script>
+</head>
+
+<body>
+
+<h1>User Registration Form</h1>
+
+<form onsubmit="return validateForm()">
+
+    <label for="name">Name (Letters only):</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="userImage">Upload Image (Max 250 KB):</label><br>
+    <input type="file" id="userImage" name="userImage" accept="image/*" required><br><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
