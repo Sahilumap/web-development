@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Click Calculator</title>
+    <style>
+        /* Center the calculator on the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #eef2f3;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: salmon;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #2b0909;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box; /* Ensures padding doesn't push width over 100% */
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer; /* Fixed typo from 'button' to 'pointer' */
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Calculator</h2>
+        
+        <input type="number" id="num1" placeholder="First Number">
+        <input type="number" id="num2" placeholder="Second Number">
+        
+        <select id="operator">
+            <option value="+">Add (+)</option>
+            <option value="-">Subtract (-)</option>
+            <option value="*">Multiply (×)</option>
+            <option value="/">Divide (÷)</option>
+        </select>
+
+        <button onclick="calculateNow()">Calculate</button>
+
+        <h3>Result: <span id="result">0</span></h3>
+    </div>
+
+    <script>
+        function calculateNow() {
+            // 1. Get values from the inputs
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            let op = document.getElementById('operator').value; // Saved as 'op'
+            let output = document.getElementById('result');
+
+            // 2. Check if user actually entered numbers
+            if (isNaN(a) || isNaN(b)) {
+                alert("Please enter both numbers!");
+                return;
+            }
+
+            let total;
+
+            // 3. Switch logic (Using 'op' to match the variable above)
+            switch (op) {
+                case '+':
+                    total = a + b;
+                    break;
+                case '-':
+                    total = a - b;
+                    break;
+                case '*':
+                    total = a * b; // Fixed: Added logic
+                    break;
+                case '/':
+                    total = (b !== 0) ? a / b : "Error: Div by 0";
+                    break;
+                default:
+                    total = "Invalid Operation";
+            }
+
+            // 4. Show the result on screen
+            output.innerText = total;
+        }
+    </script>
+
+</body>
+</html>
