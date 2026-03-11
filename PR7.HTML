@@ -3,7 +3,7 @@
 <head>
     <title>Simple Click Calculator</title>
     <style>
-        /* Center the calculator on the page */
+        
         body {
             display: flex;
             justify-content: center;
@@ -15,7 +15,7 @@
         }
 
         .container {
-            background: salmon;
+            background: rgba(170, 7, 42, 0.171);
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -27,26 +27,26 @@
             width: 100%;
             padding: 12px;
             margin: 10px 0;
-            border: 1px solid #2b0909;
+            border: 1px solid #1bc24d;
             border-radius: 6px;
             font-size: 16px;
-            box-sizing: border-box; /* Ensures padding doesn't push width over 100% */
+            box-sizing: border-box; 
         }
 
         button {
-            background-color: #28a745;
+            background-color: #1dbb45;
             color: white;
-            cursor: pointer; /* Fixed typo from 'button' to 'pointer' */
+            cursor: pointer;
             font-weight: bold;
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #e0c218;
         }
 
         h3 {
             margin-top: 20px;
-            color: #333;
+            color: #a7a0a0;
         }
     </style>
 </head>
@@ -72,13 +72,13 @@
 
     <script>
         function calculateNow() {
-            // 1. Get values from the inputs
+            
             let a = parseFloat(document.getElementById('num1').value);
             let b = parseFloat(document.getElementById('num2').value);
-            let op = document.getElementById('operator').value; // Saved as 'op'
+            let op = document.getElementById('operator').value; 
             let output = document.getElementById('result');
 
-            // 2. Check if user actually entered numbers
+            
             if (isNaN(a) || isNaN(b)) {
                 alert("Please enter both numbers!");
                 return;
@@ -86,7 +86,7 @@
 
             let total;
 
-            // 3. Switch logic (Using 'op' to match the variable above)
+            
             switch (op) {
                 case '+':
                     total = a + b;
@@ -95,7 +95,7 @@
                     total = a - b;
                     break;
                 case '*':
-                    total = a * b; // Fixed: Added logic
+                    total = a * b; 
                     break;
                 case '/':
                     total = (b !== 0) ? a / b : "Error: Div by 0";
@@ -104,7 +104,7 @@
                     total = "Invalid Operation";
             }
 
-            // 4. Show the result on screen
+    
             output.innerText = total;
         }
     </script>
