@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Webpage using DOM</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="heading">Welcome to My Webpage</h1>
+
+    <button onclick="changeText()">Change Heading</button>
+    <button onclick="showDate()">Show Date & Time</button>
+    <button onclick="changeColor()">Change Background</button>
+
+    <h3>Add Items to List</h3>
+    <input type="text" id="itemInput" placeholder="Enter item">
+    <button onclick="addItem()">Add Item</button>
+
+    <ul id="itemList"></ul>
+
+    <p id="dateTime"></p>
+
+    <script>
+        function changeText() {
+            document.getElementById("heading").innerHTML = "Heading Changed Successfully!"; //inner HTML replaces content
+        }
+
+        function showDate() {
+            document.getElementById("dateTime").innerHTML = new Date();
+        }
+
+        function changeColor() {
+            document.body.style.backgroundColor =
+                "#" + Math.floor(Math.random()*16777215).toString(16);
+        }
+
+        function addItem() {
+            let input = document.getElementById("itemInput").value;
+            if(input !== "") {
+                let li = document.createElement("li");
+                li.textContent = input;
+                document.getElementById("itemList").appendChild(li);
+                document.getElementById("itemInput").value = "";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
